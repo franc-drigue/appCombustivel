@@ -1,4 +1,4 @@
-import {Stack} from "expo-router"
+import {Stack} from "expo-router";
 
 export default function Layout() {
     return (
@@ -7,8 +7,8 @@ export default function Layout() {
             headerShown: false
          }} 
         >
-            <Stack.Screen name="index" options={{statusBarBackgroundColor: "#000"}}/>
-            <Stack.Screen name="result" options={{title: "Resultado"}}/>
+            <Stack.Screen name="index"/>
+            <Stack.Screen name="result"/>
         </Stack>
     );
 }

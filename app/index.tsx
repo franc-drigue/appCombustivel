@@ -5,14 +5,23 @@ import {
    Text,
    StyleSheet,
    TextInput,
-   TouchableOpacity
+   TouchableOpacity,
+   Image
 } from "react-native";
+
 
 
 export default function Home() {
     return (
       <View style={styles.container}>
          <View style={styles.containerContent}>
+
+         <Image
+            source={require("../assets/bomba.png")}
+            resizeMode="contain"
+            style={styles.image}
+          />
+
           <Text style={styles.title}>Qual a melhor opção?</Text>
           <Text style={styles.label}>Álcool (preço por litro)</Text>
             <TextInput
@@ -26,11 +35,9 @@ export default function Home() {
              placeholder="7.30"
             />  
          
-           <TouchableOpacity style={styles.button}>
-             <Text style={styles.textButton}>
-                Calcular
-             </Text>
-           </TouchableOpacity>
+          <Link href={"/result"} style={styles.button}> 
+                  Calcular
+          </Link>
          </View>
       </View>
     )
@@ -67,13 +74,11 @@ const styles = StyleSheet.create({
       borderRadius: 4,
       justifyContent: "center",
       alignItems: "center",
-      paddingVertical: 10
-   },
-
-   textButton: {
-      fontSize: 18,
-      fontWeight: "700",
-      color: "#fff"
+      paddingVertical: 10,
+      color: "#fff",
+      fontSize: 20,
+      textAlign: "center",
+      fontWeight: "700"
    },
 
    title: {
@@ -82,6 +87,13 @@ const styles = StyleSheet.create({
       color: "#fff",
       alignSelf: "center",
       marginBottom: 40
+   },
+
+   image: {
+      width: 200,
+      height: 200,
+      marginBottom: 30,
+      alignSelf: "center"
    }
-})
+});
 
