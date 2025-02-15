@@ -6,9 +6,24 @@ import {
 } from 'react-native';
 import React from 'react';
 import {Link} from "expo-router";
+import { useLocalSearchParams } from 'expo-router';
+import { useStore } from "../store/store";
 
+type Params = {
+  valorAlcool: string
+  valorGasolina: string
+}
 
 export default function result() {
+
+  const {
+    setVlrAlcool,
+    setVlrGasolina
+  } = useStore()
+  const router:Params = useLocalSearchParams();
+
+  let calc = parseFloat(router.valorAlcool) / parseFloat(router.valorGasolina)
+
   return (
     <View style={styles.container}>
          <Image
@@ -16,12 +31,15 @@ export default function result() {
             resizeMode="contain"
             style={styles.image}       
           />
-         <Text style={styles.title}>Compensa usar Álcool</Text>
+         <Text style={styles.title}>{calc < 0.7 ? "Compensa usar Álcool" : "Compensa usar Gasolina"}</Text>
          <Text style={styles.subTitle}>Com os preços:</Text>
-         <Text style={styles.textValue}>Álcool: R$ 4.60</Text>
-         <Text style={styles.textValue}>Gasolina: R$ 7.80</Text>
+         <Text style={styles.textValue}>Álcool: R$ {parseFloat(router.valorAlcool).toFixed(2).replace(".", ",")}</Text>
+         <Text style={styles.textValue}>Gasolina: R$ {parseFloat(router.valorGasolina).toFixed(2).replace(".", ",")}</Text>
 
-         <Link href={"/"} style={styles.button}>
+         <Link href={"/"} style={styles.button} onPress={() => {
+          setVlrAlcool("");
+          setVlrGasolina("");
+         }}>
            Calcular novamente
          </Link>
     </View>
