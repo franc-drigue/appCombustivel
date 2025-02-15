@@ -12,6 +12,7 @@ import { useStore } from "../store/store";
 
 
 
+
 export default function Home() {
 
    const {
@@ -20,7 +21,7 @@ export default function Home() {
       setVlrAlcool,
       setVlrGasolina
    } = useStore();
-   
+
    const [msgInput, setMsgInput] = useState<string>("");
 
    const validInput = () => {

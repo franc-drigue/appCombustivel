@@ -10,8 +10,8 @@ import { useLocalSearchParams } from 'expo-router';
 import { useStore } from "../store/store";
 
 type Params = {
-  valorAlcool: string
-  valorGasolina: string
+  valorAlcool: string;
+  valorGasolina: string;
 }
 
 export default function result() {
@@ -19,10 +19,11 @@ export default function result() {
   const {
     setVlrAlcool,
     setVlrGasolina
-  } = useStore()
+  } = useStore();
+
   const router:Params = useLocalSearchParams();
 
-  let calc = parseFloat(router.valorAlcool) / parseFloat(router.valorGasolina)
+  let calc = parseFloat(router.valorAlcool) / parseFloat(router.valorGasolina);
 
   return (
     <View style={styles.container}>
